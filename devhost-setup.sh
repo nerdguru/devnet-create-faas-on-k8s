@@ -18,3 +18,25 @@ helm install stable/minio --name fonkfe --set service.type=LoadBalancer,persiste
 
 ## Install Mongo
 helm install stable/mongodb --name fonkdb --set service.type=LoadBalancer,persistence.enabled=false,usePassword=false
+
+## Install OpenFaaS back end
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
+git clone https://github.com/openfaas/faas-netes.git
+cd faas-netes/chart/openfaas
+helm install . --namespace openfaas --set functionNamespace=openfaas-fn
+cd
+
+## Install OpenFaaS CLI
+curl -sSL https://cli.openfaas.com | sudo sh
+
+## Install OpenWhisk back end
+git clone https://github.com/apache/incubator-openwhisk-deploy-kube.git
+kubectl label nodes --all openwhisk-role=invoker
+helm install ~/incubator-openwhisk-deploy-kube/helm/openwhisk --namespace=openwhisk --name=owdev -f ~/devnet-create-faas-on-k8s/myOWcluster.yaml
+
+## Install and configure OpenWhisk CLI
+wget https://github.com/apache/incubator-openwhisk-cli/releases/download/0.10.0-incubating/OpenWhisk_CLI-0.10.0-incubating-linux-386.tgz
+tar -xf OpenWhisk_CLI-0.10.0-incubating-linux-386.tgz
+sudo mv wsk /usr/local/bin
+wsk property set --apihost 10.10.20.208:31001
+wsk property set --auth 23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP
