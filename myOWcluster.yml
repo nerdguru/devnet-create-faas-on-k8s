@@ -1,0 +1,8 @@
+whisk:
+  ingress:
+    type: NodePort
+    api_host_name: 10.10.20.208
+    api_host_port: 31001
+
+nginx:
+  httpsNodePort: 31001
