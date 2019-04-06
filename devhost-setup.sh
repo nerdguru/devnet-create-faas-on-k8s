@@ -1,7 +1,12 @@
-# run with "source dev-client.sh"
-
 ## Clone the lab repo
 git clone https://github.com/nerdguru/devnet-create-faas-on-k8s.git
+
+## Install Node and npm
+sudo apt-get install -y nodejs
+sudo apt install -y npm
+
+## Install Serverless
+sudo npm install -g serverless
 
 ## Install kubectl with snap
 sudo snap install kubectl --classic
