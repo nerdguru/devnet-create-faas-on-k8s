@@ -50,16 +50,22 @@ wget https://github.com/apache/incubator-openwhisk-cli/releases/download/0.10.0-
 tar -xf OpenWhisk_CLI-0.10.0-incubating-linux-386.tgz
 sudo mv wsk /usr/local/bin
 
-## After OpenFaaS is up and running
-echo -n $PASSWORD | faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
-faas-cli version
-
-wsk property set --apihost 10.10.20.208:31001
-wsk property set --auth 23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP
-
 ## Install Node and npm
+sudo apt update
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 
 ## Install Serverless
 sudo npm install -g serverless
+sudo node /usr/local/lib/node_modules/serverless/scripts/postinstall.js
+sudo chown -R $USER:$(id -gn $USER) /home/ubuntu/.config
+
+
+###################################
+## After OpenFaaS is up and running
+echo -n $PASSWORD | faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
+faas-cli version
+
+## Configure wsk
+wsk property set --apihost 10.10.20.208:31001
+wsk property set --auth 23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP
