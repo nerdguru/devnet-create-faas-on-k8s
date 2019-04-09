@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://10.10.20.208:31112
+
+functions:
+  list:
+    lang: node8-express
+    handler: ./list
+    image: petecj2/list

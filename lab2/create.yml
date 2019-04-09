@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://10.10.20.208:31112
+
+functions:
+  create:
+    lang: node8-express
+    handler: ./create
+    image: petecj2/create
