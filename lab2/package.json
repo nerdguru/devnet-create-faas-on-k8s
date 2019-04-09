@@ -1,0 +1,17 @@
+{
+  "name": "Guestbook",
+  "version": "0.1.0",
+  "description": "Guestbook service built with Fission",
+  "dependencies": {
+    "body-parser": "*",
+    "co": "~4.6.0",
+    "express": "*",
+    "minimist": "*",
+    "morgan": "*",
+    "mz": "~2.7.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.3",
+    "underscore": ">=1.8.3",
+    "mongodb": "^2.2.30"
+  }
+}
