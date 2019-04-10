@@ -25,17 +25,13 @@ functions:
     annotations:
       web-export: true
     parameters:
-      mongoHost: 10.10.20.210:31980
+      mongoHost: 10.10.20.202:27017
   list:
     handler: list.main
     annotations:
       web-export: true
     parameters:
-      mongoHost: 10.10.20.210:31980
-  greeting:
-    handler: greeting.main
-    annotations:
-      web-export: true
+      mongoHost: 10.10.20.202:27017
 
 # extend the framework using plugins listed here:
 # https://github.com/serverless/plugins
