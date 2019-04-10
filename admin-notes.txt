@@ -1,0 +1,20 @@
+## Setup notes for creating the devhost
+
+First, Deploy OVF Template using:
+https://cloud-images.ubuntu.com/releases/18.10/release-20190402/ubuntu-18.10-server-cloudimg-amd64.ova
+
+That comes from: https://cloud-images.ubuntu.com/releases/18.10/release-20190402/
+
+Public key:
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7D7JJE5EiDAJP3ffW3lIv25ZCFfFBxjY1K7IBp8mS2W1M1QlDKNoOsfSREgYIJkBwZz3HDSKqPqPHJ6BZ+MaY+slw7IIEPQUmiRBZ3sqipKGiKkaMhfzl0PKv3kJSdFJO0/fsBw0lJtDWuAcRMGb7Q7jVVjKj3/74sRVYqqE1w5ZVUGrkoJccDlkkBujdEEtKiQK1DtBmHX9xDn6tXzo3XktgR0DZs332QHydE1VIljUxzpskwRrUbnNwmZdCsKXRe0miUDmMZUxIOqAE+8tVjRysLYdK0eqmeIRJKdV9pi3n3oojdDA6x+O4W16Jii1PMaiRL7DuGcnCezCjqmal
+
+First password: Cisco123
+Second password: Cisco123!
+
+ssh ubuntu@10.10.20.107 -i FaaSonK8s.pem
+
+## in .bashrc
+export PASSWORD=Cisco123
+export OPENFAAS_URL=http://10.10.20.208:31112
+export KUBECONFIG=~/devnet-create-faas-on-k8s/kubeconfig.yaml
