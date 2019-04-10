@@ -93,6 +93,28 @@ $ curl --insecure https://10.10.20.208:31001/api/v1/web/guest/default/guestbook-
 ```
 
 ## Looking at your containers
+You can take a look at what containers OpenWhisk mantains through `kubectl`:
+```
+$ kubectl get pods -n openwhisk
+NAME                                      READY   STATUS      RESTARTS   AGE
+owdev-alarmprovider-d84786b95-8ltbj       1/1     Running     0          5h
+owdev-apigateway-59b867d57-q7jz6          1/1     Running     0          5h
+owdev-cloudantprovider-69f966579d-j27g4   1/1     Running     0          5h
+owdev-controller-0                        1/1     Running     0          5h
+owdev-couchdb-7dd9cbbbd7-qpkph            1/1     Running     0          5h
+owdev-init-couchdb-jsvv5                  0/1     Completed   0          5h
+owdev-install-packages-q6474              0/1     Running       0          5h
+owdev-install-packages-zr548              0/1     Running       0          5h
+owdev-invoker-bgbs8                       1/1     Running     0          5h
+owdev-invoker-lrqdh                       1/1     Running     0          5h
+owdev-kafka-0                             1/1     Running     0          5h
+owdev-kafkaprovider-5b9d6c5c5b-t9fn9      1/1     Running     0          5h
+owdev-nginx-79dcc64c7d-v9q8t              1/1     Running     0          5h
+owdev-redis-74d5d5f6bb-kx7gd              1/1     Running     0          5h
+owdev-wskadmin                            1/1     Running     0          5h
+owdev-zookeeper-0                         1/1     Running     0          5h
+```
+Note that there are no persistent containers to run the functions and that this set of containers will remain roughly the same as OpenWhisk scales to more functions.
 
 ## Deploying your Web UI
 The FONK Guestbook Front End setup steps are as follows:

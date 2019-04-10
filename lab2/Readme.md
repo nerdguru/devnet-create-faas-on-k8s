@@ -5,6 +5,7 @@ This folder contains a version of the FONK Guestbook application written in Node
 * Creating `create.yml` and `list.yml`
 * Building, Pushing, and Deploying the functions
 * Testing your API with `curl`
+* Looking at your containers
 * Deploying your Web UI
 
 ## Creating `create.yml` and `list.yml`
@@ -103,6 +104,17 @@ $ curl http://10.10.20.208:31112/function/list
 ```
 
 These two URLs can now be used on the `frontend`, although note in the source code of the functions that the OpenFaaS API gateway does not return `Access-Control-Allow-Origin: *` by default, hence why that is set explicitly by each function to avoid CORS issues with the GUI.
+
+## Looking at your containers
+You can take a look at what containers OpenWhisk mantains through `kubectl`:
+```
+$ kubectl get pods -n openfaas
+```
+
+But also be sure to look at the containers persisted for the functions themselves:
+```
+$ kubectl get pods -n openfaas-fn
+```
 
 ## Deploying your Web UI
 The FONK Guestbook Front End setup steps are as follows:
